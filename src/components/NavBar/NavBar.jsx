@@ -1,5 +1,6 @@
 import React from "react";
-import './style.css'
+import CartWidget from "../CartWidget";
+import './NavBar.css'
 
 const NavBar = () => {
     return(
@@ -15,7 +16,7 @@ const NavBar = () => {
         </ul>
         <div className="button_user">
             <button className="button-item">Log In</button>
-            <button className="button-item">Carrito</button>
+            <CartWidget />
         </div>
     </div>
     );
