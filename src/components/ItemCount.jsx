@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import './ItemCounter.css'
+import './ItemCount.css'
 
 const ItemCount = ({ stock, initial, compra }) => {
 
-    const [item, setItem] = useState(initial)
+    const [counter, setCounter] = useState(initial)
 
     const anadir = () => {
-        item < stock && setItem(item+1)
+        counter < stock && setCounter(counter+1)
     }
 
     const quitar = () => {
-        item > 1 && setItem(item-1)
+        counter > 1 && setCounter(counter-1)
     }
 
     return (
@@ -18,7 +18,7 @@ const ItemCount = ({ stock, initial, compra }) => {
         <div className='ItemAdd'>
             <div className='ItemSubmit'>
                 <button className='buttonAdd buttonStyle' onClick={quitar}>-</button>
-                <p>{item}</p>
+                <p>{counter}</p>
                 <button className='buttonAdd buttonStyle' onClick={anadir}>+</button>
             </div>
             <div>
