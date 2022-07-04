@@ -1,7 +1,8 @@
 import React from "react";
 import './Item.css'
 
-export default function Item({ elem }) {
+
+const Item = ({elem}) =>  {
 
     return (
         <div className="itemBox">
@@ -13,3 +14,5 @@ export default function Item({ elem }) {
         </div>
     );
 }
+
+export default Item;
