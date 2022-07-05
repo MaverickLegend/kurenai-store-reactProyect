@@ -1,17 +1,39 @@
-.itemDetail{
+.itemDetailContainer{
+    color: aliceblue;
+    border: solid pink 1px;
+    border-radius: 20px;
+    margin: 0 100px;
+    background-image: linear-gradient(to top, #821f386e, #2313197e);  
+    }
+
+.singleProduct{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px whitesmoke;
-    margin: 0 100px;
+}
+
+.singleDescriptionContainer{
+    width: 50%;
+}
+
+.singleImgContainer{
+    width: 50%;
 }
 
 .singleBanner {
-    width: 70%;
-    height: 70%;
-    padding: 50px 20px;
+    width: 90%;
+    height: 90%;
+    padding-right: 2rem;
 }
     
+.singleTitle{
+    font-weight: 200;
+}
+
 .singleText{
-    padding: 0 100px;
+    padding: 1rem 5rem;
+}
+
+.itemAdd{
+    margin-bottom: 3rem;
 }

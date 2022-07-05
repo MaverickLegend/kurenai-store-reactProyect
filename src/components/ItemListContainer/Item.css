@@ -1,6 +1,6 @@
 .itemsContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .itemBox{
@@ -14,8 +14,9 @@
     padding-bottom: 30px;
 }
 
-.itemBox p{
-    padding: 10px;
+.itemBoxText{
+    font-size: 2rem;
+    padding: 1rem;
     margin: 0;
 }
 
