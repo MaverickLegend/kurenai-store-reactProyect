@@ -29,6 +29,8 @@ const ItemListContainer = ({ greetings }) => {
             }, 2000);            
         }, []);
 
+        console.log(products)
+
         if (loader) {
             return (
                 <>

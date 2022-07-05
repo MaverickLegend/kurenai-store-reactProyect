@@ -1,0 +1,17 @@
+.itemDetail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px whitesmoke;
+    margin: 0 100px;
+}
+
+.singleBanner {
+    width: 70%;
+    height: 70%;
+    padding: 50px 20px;
+}
+    
+.singleText{
+    padding: 0 100px;
+}
