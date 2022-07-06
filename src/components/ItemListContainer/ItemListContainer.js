@@ -2,8 +2,11 @@ import React from "react";
 import ItemCount from "../ItemCount";
 import ItemList from "./ItemList"
 import { useEffect, useState } from "react";
+import KurenaiLoader from '../animations/Loader/loader'
 
 const ItemListContainer = ({ greetings }) => {
+
+
     const onAdd = () => {
         alert("Tu compra ha sido realizada con éxito")
     }
@@ -26,16 +29,12 @@ const ItemListContainer = ({ greetings }) => {
                     }
                 }
                 getFilms();
-            }, 2000);            
+            }, 3000);            
         }, []);
-
-        console.log(products)
 
         if (loader) {
             return (
-                <>
-                    <h1>Cargando...</h1>
-                </>
+                <KurenaiLoader />
             );
         }
 
