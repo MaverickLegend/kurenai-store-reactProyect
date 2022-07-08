@@ -43,3 +43,14 @@
     transition: 0.5s ease-in-out;
     letter-spacing: 3px;
 }
+
+.filtersContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    background-image: linear-gradient(to left, #d4315a6e, #69394b7e);
+    border: #b4516f;
+    border-radius: 0.5rem;
+}
