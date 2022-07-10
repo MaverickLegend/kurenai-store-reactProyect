@@ -1,0 +1,33 @@
+.body__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "main__index main__index"
+}
+.main__index {
+        grid-area: main__index;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem;
+}
+
+.main__index__section {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: larger;
+}
+.div {
+    width: 50%;
+    text-align: center;
+    font-size: large;
+}
+.img {
+    width: 300px;
+    filter: drop-shadow(-5px 10px 5px rgba(255, 0, 0, 0.774));
+}
+.text{
+    font-weight: 100;
+}

@@ -1,15 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
 
     const [productID, setProductID] = useState([])
+    const { id } = useParams();
     
     useEffect(() => {
             const getProductID = async () =>{
                 try {
-                    const response = await fetch('https://ghibliapi.herokuapp.com/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49');
+                    const response = await fetch('https://ghibliapi.herokuapp.com/films/');
                     const data = await response.json();
                     setProductID(data);
                 }
@@ -17,8 +19,9 @@ const ItemDetailContainer = () => {
                     console.log(err)
                 }
             }
-            getProductID();          
-    }, []);
+            getProductID(); 
+            console.log(setProductID)
+    }, [id]);
 
     return(
         <ItemDetail singleProduct={productID} />
