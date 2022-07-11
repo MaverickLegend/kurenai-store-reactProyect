@@ -16,7 +16,7 @@ const KurenaiLoader = () => {
     }, [])
     
     return (
-        <div style={{width: '200px', height: '200px'}} ref={animationContainer}></div>
+        <div style={{width: '150px', height: '150px'}} ref={animationContainer}></div>
     )
 }
 

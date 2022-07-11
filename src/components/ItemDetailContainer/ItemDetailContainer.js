@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
             const getProductID = async () =>{
                 try {
-                    const response = await fetch('https://ghibliapi.herokuapp.com/films/');
+                    const response = await fetch(`https://ghibliapi.herokuapp.com/films/${id}`);
                     const data = await response.json();
                     setProductID(data);
                 }
@@ -19,8 +19,7 @@ const ItemDetailContainer = () => {
                     console.log(err)
                 }
             }
-            getProductID(); 
-            console.log(setProductID)
+            getProductID();
     }, [id]);
 
     return(
