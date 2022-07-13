@@ -29,6 +29,7 @@ const ItemListContainer = ({ greetings }) => {
                 .finally(() => setLoader(false))
         }, 3000);
     },[director, URL]);
+
     // useEffect(() => {
     //         setLoader(true);
     //         setTimeout(() => {
@@ -76,6 +77,7 @@ const ItemListContainer = ({ greetings }) => {
         //     setProducts(wit)
         // }
 
+
         if (loader) {
             return (
                 <KurenaiLoader />
@@ -84,12 +86,14 @@ const ItemListContainer = ({ greetings }) => {
 
     return(
             <div>                
-                {/* <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1> */}
+                <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1>
                 <p>Somos Kurenai Store, tienda especializada en llevar las mejores ilustraciones y diseños de manga, animé, rock y metal a poleras de gran calidad.</p>   
-                <div className="filtersContainer">
+                {products.map((product) =>
+                <Link key={product.id} to={`/productos/director:${product.director}`}><button className="buttonStyle">{product.director}</button></Link>)}
+
+                {/* <div className="filtersContainer">
                     <h3 style={{fontWeight: 'lighter', paddingLeft: '1rem', width:'20%'}}>Filtros:</h3>
                     <div style={{display: 'flex', justifyContent: 'space-around', width: '80%'}}> 
-                        <Link to='/productos:director'><button className="buttonStyle">Hayao Miyazaki</button></Link> 
                         <button className="buttonStyle">Isao Takahata</button>
                         <button className="buttonStyle">Yoshifumi Kondō</button>
                         <button className="buttonStyle">Hiroyuki Morita</button>
@@ -97,7 +101,7 @@ const ItemListContainer = ({ greetings }) => {
                         <button className="buttonStyle">Hiromasa Yonebayashi</button>
                         <button className="buttonStyle">Michaël Dudok de Wit</button>
                     </div>
-                </div>
+                </div> */}
                 <ItemList films={products} />
                 {/* <ItemCount stock={6} initial={1} compra={onAdd}/> */}
             </div>

@@ -2,15 +2,9 @@ import React from "react";
 import CartWidget from "../CartWidget";
 import logo from '../../img/main-logo.png'
 import './NavBar.css';
-import {Link, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
-
-    const categories = [
-        {name: "Inicio", id:1, route: "/"},
-        {name: "Productos", id:2, route: "/productos"},
-        {name: "Nosotros", id:3, route: "/nosotros"}
-    ]
 
     return(
     <div className="navBar_container">
@@ -19,7 +13,9 @@ const NavBar = () => {
             <h1 className="navbarTitle">Kurenai Store</h1>
         </div>
         <ul className="links">
-            {categories.map((cat) => <NavLink className={"linksRoute"} key={cat.id} to={cat.route}>{cat.name}</NavLink>)}
+            <Link to="/"> <h1 className={"linksRoute"}>Inicio</h1></Link>
+            <Link to="/productos"><h1 className="linksRoute">Productos</h1></Link>
+            <Link to="/nosotros"><h1 className="linksRoute">Nosotros</h1></Link>
         </ul>
         <div className="button_user">
             <button className="button-item">Log In</button>
