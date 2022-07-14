@@ -17,8 +17,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         onAdd(counter);
     }
 
-    console.log(compra)
-
     return (
     <div className='ItemAddContainer'>
         <div className='ItemAdd'>

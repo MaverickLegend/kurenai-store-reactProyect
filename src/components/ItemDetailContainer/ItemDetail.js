@@ -1,17 +1,20 @@
-import React from "react";
 import '../ItemCount.css'
 import './itemDetail.css'
 import ItemCount from '../ItemCount.jsx'
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from 'react';
+import { cartContext } from "../../contexts/CartContext";
 
 const ItemDetail = ({singleProduct}) => {
 
     const [buyFinalized, setBuyFinalized] = useState(false)
+    const { addItem } = useContext(cartContext);
 
-    const onAdd = () => {
+    const onAdd = (counter) => {
+        addItem({...singleProduct, qty: counter});
         setBuyFinalized(true);
     }
+
 
     return(
         <div className="itemDetailContainer">

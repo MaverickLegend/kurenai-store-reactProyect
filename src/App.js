@@ -7,6 +7,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import Nosotros from './components/Nosotros'
 import Inicio from './components/Inicio';
 import CartWidget from './components/CartWidget';
+import CartCustomProvider from './contexts/CartContext'
 
 function App() {
   const bienvenida = 'Bienvenid@s!';
@@ -14,14 +15,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Inicio />}/>
-          <Route path='/productos' element={<ItemListContainer greetings={bienvenida}/>}/>
-          <Route path='/productos/:id' element={<ItemDetailContainer />} /> 
-          <Route path='/nosotros' element={<Nosotros />}/>  
-          <Route path='/cart' element={<CartWidget />}/>            
-        </Routes>
+        <CartCustomProvider>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Inicio />}/>
+            <Route path='/productos' element={<ItemListContainer greetings={bienvenida}/>}/>
+            <Route path='/productos/:id' element={<ItemDetailContainer />} /> 
+            <Route path='/nosotros' element={<Nosotros />}/>  
+            <Route path='/cart' element={<CartWidget />}/>            
+          </Routes>
+        </CartCustomProvider>
       </BrowserRouter>
     </div>
   );
