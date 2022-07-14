@@ -1,8 +1,18 @@
 import React from "react";
+import '../ItemCount.css'
 import './itemDetail.css'
 import ItemCount from '../ItemCount.jsx'
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ItemDetail = ({singleProduct}) => {
+
+    const [buyFinalized, setBuyFinalized] = useState(false)
+
+    const onAdd = () => {
+        setBuyFinalized(true);
+    }
+
     return(
         <div className="itemDetailContainer">
             <div className="singleProduct">
@@ -15,9 +25,11 @@ const ItemDetail = ({singleProduct}) => {
                     <img className="singleBanner" src={singleProduct.movie_banner} />
                 </div>
             </div>
-                <div className="itemAdd">
-                    <ItemCount stock={4} initial={1}/>
-                </div>        
+            <div>
+                {buyFinalized
+                ? <Link to="/cart"><button style={{width:'300px', margin:'10px'}} className="buttonStyle">Finalizar compra</button></Link>
+                :<ItemCount stock={4} initial={1} onAdd={onAdd}/>}                
+            </div>
         </div>
     )
 }
