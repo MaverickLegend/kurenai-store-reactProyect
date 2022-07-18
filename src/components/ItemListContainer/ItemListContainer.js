@@ -89,7 +89,7 @@ const ItemListContainer = ({ greetings }) => {
                 <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1>
                 <p>Somos Kurenai Store, tienda especializada en llevar las mejores ilustraciones y diseños de manga, animé, rock y metal a poleras de gran calidad.</p>   
                 {products.map((product) =>
-                <Link key={product.id} to={`/productos/director:${product.director}`}><button className="buttonStyle">{product.director}</button></Link>)}
+                <Link key={product.director} to={`/productos/director:${product.director}`}><button className="buttonStyle">{product.director}</button></Link>)}
 
                 {/* <div className="filtersContainer">
                     <h3 style={{fontWeight: 'lighter', paddingLeft: '1rem', width:'20%'}}>Filtros:</h3>

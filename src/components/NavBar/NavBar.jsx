@@ -19,7 +19,7 @@ const NavBar = () => {
         </ul>
         <div className="button_user">
             <button className="button-item">Log In</button>
-            <Link to="/carrito"><CartWidget /></Link>
+            <Link to="/cart"><CartWidget /></Link>
         </div>
     </div>
     );

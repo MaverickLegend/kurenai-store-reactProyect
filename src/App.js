@@ -6,7 +6,7 @@ import {BrowserRouter, Routes, Route,} from "react-router-dom";
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Nosotros from './components/Nosotros'
 import Inicio from './components/Inicio';
-import CartWidget from './components/CartWidget';
+import Cart from './components/Cart';
 import CartCustomProvider from './contexts/CartContext'
 
 function App() {
@@ -20,9 +20,10 @@ function App() {
           <Routes>
             <Route path='/' element={<Inicio />}/>
             <Route path='/productos' element={<ItemListContainer greetings={bienvenida}/>}/>
-            <Route path='/productos/:id' element={<ItemDetailContainer />} /> 
+            <Route path='/productos/:id' element={<ItemDetailContainer />} />
+            <Route path='/productos/:director' element={<ItemListContainer />} />
             <Route path='/nosotros' element={<Nosotros />}/>  
-            <Route path='/cart' element={<CartWidget />}/>            
+            <Route path='/cart' element={<Cart />}/>            
           </Routes>
         </CartCustomProvider>
       </BrowserRouter>
