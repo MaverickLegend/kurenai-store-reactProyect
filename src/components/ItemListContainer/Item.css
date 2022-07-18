@@ -18,12 +18,14 @@
     font-size: 2rem;
     padding: 1rem;
     margin: 0;
+    height: 10%;
 }
 
 .imgContainer{
-    width: 80%;
+    width: 90%;
     padding-top: 20px;
     margin-bottom: 20px;
+    height: 60%;
 }
 
 .buttonStyle{

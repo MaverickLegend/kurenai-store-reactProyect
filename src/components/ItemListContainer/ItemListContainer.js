@@ -26,56 +26,37 @@ const ItemListContainer = ({ greetings }) => {
                 .get(URL)
                 .then((response) => setProducts(response.data))
                 .catch((err) => console.log(err))
-                .finally(() => setLoader(false))
+                .finally(() => setLoader(false));
+                
         }, 3000);
     },[director, URL]);
-
-    // useEffect(() => {
-    //         setLoader(true);
-    //         setTimeout(() => {
-    //             const URL = director
-    //                         ? `https://ghibliapi.herokuapp.com/films/${director}`
-    //                         : 'https://ghibliapi.herokuapp.com/films/' 
-    //             const getProducts = async () =>{
-    //                 try {
-    //                     const response = await fetch(URL);
-    //                     const data = await response.json()
-    //                     setProducts(data);                       
-    //                 }
-    //                 catch (err) {
-    //                     console.log(err)
-    //                 }
-    //                 finally{setLoader(false)}
-    //             }           
-    //             getProducts();
-    //         }, 3000);
-    //     }, [director, URL]);
         
-        // const takahata = products.filter (t=>t.director === 'Isao Takahata');  
-        // const kondo = products.filter (t=>t.director === 'Yoshifumi Kondō');  
-        // const morita = products.filter (t=>t.director === 'Hiroyuki Morita');    
-        // const gMiyazaki = products.filter (t=>t.director === 'Gorō Miyazaki');    
-        // const yonebayashi = products.filter (t=>t.director === 'Hiromasa Yonebayashi');
-        // const wit = products.filter (t=>t.director === 'Michaël Dudok de Wit');
+        const takahata = products.filter (t=>t.director === 'Isao Takahata');  
+        const kondo = products.filter (t=>t.director === 'Yoshifumi Kondō');
+        const morita = products.filter (t=>t.director === 'Hiroyuki Morita');    
+        const gMiyazaki = products.filter (t=>t.director === 'Gorō Miyazaki');    
+        const yonebayashi = products.filter (t=>t.director === 'Hiromasa Yonebayashi');
+        const wit = products.filter (t=>t.director === 'Michaël Dudok de Wit');
 
-        // const takahataFilter = () => {
-        //     setProducts(takahata)
-        // }
-        // const kondoFilter = () => {
-        //     setProducts(kondo)
-        // }
-        // const moritaFilter = () => {
-        //     setProducts(morita)
-        // }
-        // const gmiyazakiFilter = () => {
-        //     setProducts(gMiyazaki)
-        // }
-        // const yonebayashiFilter = () => {
-        //     setProducts(yonebayashi)
-        // }
-        // const witFilter = () => {
-        //     setProducts(wit)
-        // }
+        const mainFilter = event => {
+            switch (event.target.innerText) {
+                case 'Isao Takahata':
+                    console.log(takahata);
+                    break;
+                case 'Yoshifumi Kondō':
+                    console.log(kondo);
+                    break;
+                case 'Hiroyuki Morita':
+                    console.log(morita);
+                    break;
+                case 'Gorō Miyazaki':
+                    console.log(gMiyazaki);
+                    break;
+            
+                default:
+                    break;
+            }
+        }
 
 
         if (loader) {
@@ -88,20 +69,20 @@ const ItemListContainer = ({ greetings }) => {
             <div>                
                 <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1>
                 <p>Somos Kurenai Store, tienda especializada en llevar las mejores ilustraciones y diseños de manga, animé, rock y metal a poleras de gran calidad.</p>   
-                {products.map((product) =>
-                <Link key={product.director} to={`/productos/director:${product.director}`}><button className="buttonStyle">{product.director}</button></Link>)}
+                {/* {products.map((product) => */}
+                {/* // <Link key={product.director} to={`/productos/director:${product.director}`}><button className="buttonStyle">{product.director}</button></Link>)} */}
 
-                {/* <div className="filtersContainer">
+                <div className="filtersContainer">
                     <h3 style={{fontWeight: 'lighter', paddingLeft: '1rem', width:'20%'}}>Filtros:</h3>
                     <div style={{display: 'flex', justifyContent: 'space-around', width: '80%'}}> 
-                        <button className="buttonStyle">Isao Takahata</button>
-                        <button className="buttonStyle">Yoshifumi Kondō</button>
-                        <button className="buttonStyle">Hiroyuki Morita</button>
-                        <button className="buttonStyle">Gorō Miyazaki</button>
+                        <button onClick={mainFilter} className="buttonStyle">Isao Takahata</button>
+                        <button onClick={mainFilter} className="buttonStyle">Yoshifumi Kondō</button>
+                        <button onClick={mainFilter} className="buttonStyle">Hiroyuki Morita</button>
+                        <button onClick={mainFilter} className="buttonStyle">Gorō Miyazaki</button>
                         <button className="buttonStyle">Hiromasa Yonebayashi</button>
                         <button className="buttonStyle">Michaël Dudok de Wit</button>
                     </div>
-                </div> */}
+                </div>
                 <ItemList films={products} />
                 {/* <ItemCount stock={6} initial={1} compra={onAdd}/> */}
             </div>
