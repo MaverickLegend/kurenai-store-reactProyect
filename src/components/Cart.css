@@ -1,0 +1,28 @@
+.cartContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 10rem 0;
+    border: solid pink 1px;
+    width: 80%;
+    border-radius: 20px;
+    color: aliceblue;
+    background-image: linear-gradient(to top, #821f386e, #2313197e);  
+}
+
+/* .itemsCartContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} */
+.detailContainerLeft{
+    border-bottom: solid pink 1px;
+    width: 50%;
+    margin: 10rem 0rem;
+}
+
+.detailContainerRight{
+    border-bottom: solid pink 1px;
+    width: 50%;
+    margin: 10rem 0rem;
+}
+
