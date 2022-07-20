@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-
 export const cartContext = createContext();
 const { Provider } = cartContext;
 
@@ -33,7 +32,7 @@ const CartCustomProvider = ({ children }) => {
     }
 
     const deleteItem = (id) => {
-        setProducts(products.filter(singleProduct => singleProduct.id !== id))
+        console.log(id)
     };
 
     const isInCart = (id) => {

@@ -1,28 +1,61 @@
 .cartContainer{
-    display: flex;
-    flex-direction: column;
     margin: 10rem 0;
-    border: solid pink 1px;
+    border: solid pink 2.5px;
     width: 80%;
     border-radius: 20px;
     color: aliceblue;
     background-image: linear-gradient(to top, #821f386e, #2313197e);  
 }
 
-/* .itemsCartContainer{
+.itemsCartContainer{
+    display: grid;
+    grid-template-columns: 1fr 0.2fr 0.35fr;
+    grid-template-rows: 0.5fr 2fr 0.5fr;
+    grid-template-areas:
+    "top top top"
+    "left middle right"
+    "bottom bottom bottom";
+}
+
+.itemsTopContainer{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-} */
+    justify-content: flex-end;
+    grid-area: top;
+    font-size: medium;
+    padding-right: 2rem;
+}
 .detailContainerLeft{
-    border-bottom: solid pink 1px;
-    width: 50%;
-    margin: 10rem 0rem;
+    display: flex;
+    flex-direction: column;
+    grid-area: left;
 }
-
+.detailContainerMiddle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    grid-area: middle;
+}
 .detailContainerRight{
-    border-bottom: solid pink 1px;
-    width: 50%;
-    margin: 10rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 3rem;
+    grid-area: right;
+}
+.containerBottom{
+    display: flex;
+    justify-content: center;
+    grid-area: bottom;
 }
 
+.totalItemsText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+    background-color: aliceblue;
+    color: #b4516f;
+    letter-spacing: 3px;
+    width: 15%;
+    height: 60%;
+}
