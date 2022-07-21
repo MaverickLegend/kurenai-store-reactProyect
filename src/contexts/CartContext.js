@@ -4,7 +4,7 @@ const { Provider } = cartContext;
 
 const CartCustomProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
-    const [qtyItems, setQtyItems] = useState(0);    
+    const [qtyItems, setQtyItems] = useState(0);  
 
     const getQtyItems = () => {
         let qty = 0;
@@ -31,9 +31,12 @@ const CartCustomProvider = ({ children }) => {
         }
     }
 
-    const deleteItem = (id) => {
-        console.log(id)
-    };
+    const deleteItem = () => {
+        const founded = products.find(p => p.id !== products.id)
+        const deleted = [...products]
+        console.log(founded)
+        console.log(founded.qty)
+    }
 
     const isInCart = (id) => {
         return products.some(singleProduct => singleProduct.id === id)

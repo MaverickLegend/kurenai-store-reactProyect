@@ -30,7 +30,7 @@ const ItemDetail = ({singleProduct}) => {
             </div>
             <div>
                 {buyFinalized
-                ? <Link to="/cart"><button style={{width:'300px', margin:'10px'}} className="buttonStyle">Finalizar compra</button></Link>
+                ?<Link to="/cart"><button style={{width:'300px', margin:'10px'}} className="buttonStyle">Finalizar compra</button></Link>
                 :<ItemCount stock={4} initial={1} onAdd={onAdd}/>}                
             </div>
         </div>

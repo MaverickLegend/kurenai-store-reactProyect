@@ -1,18 +1,18 @@
+import './Cart.css'
 import React from "react"
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { cartContext } from "../contexts/CartContext";
-import './Cart.css'
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
     const { products, deleteItem, clear, qtyItems } = useContext(cartContext);
-
+    
     return(
         <>
             <div className="cartContainer" >
                 {qtyItems === 0
-                    ?
-                    <>
+                    ?<>
                         <h1 style={{fontWeight: 'lighter', letterSpacing:'5px'}}>Su carrito está vacío</h1>
                         <Link to={'/productos'}><button style={{marginBottom:'2rem'}} className="buttonStyle">Ir a comprar</button></Link>
                     </>
