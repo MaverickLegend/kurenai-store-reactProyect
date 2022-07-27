@@ -1,96 +1,70 @@
 import React from "react";
 import ItemList from "./ItemList"
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState} from "react";
 import KurenaiLoader from '../animations/Loader/loader'
+import { db } from '../../firebase/firebase'
+import { getDocs, collection } from "firebase/firestore"
 
-const ItemListContainer = () => {
+const ItemListContainer = ({greetings}) => {
     
     const [products, setProducts] = useState([])
-    const [loader,setLoader] = useState(false)
+    const [loader,setLoader] = useState(true)
 
     useEffect(() => {
-        setLoader(true);
-        setTimeout(() => { 
-        const URL = 'https://ghibliapi.herokuapp.com/films/'
-            axios
-                .get(URL)
-                .then((response) => setProducts(response.data))
-                .catch((err) => console.log(err))
-                .finally(() => setLoader(false));
-                
-        }, 3000);
-    },[]);
-        
-    const miyazaki = products.filter (t=>t.director === 'Hayao Miyazaki')
-    const takahata = products.filter (t=>t.director === 'Isao Takahata');  
-    const kondo = products.filter (t=>t.director === 'Yoshifumi Kondō');
-    const morita = products.filter (t=>t.director === 'Hiroyuki Morita');    
-    const gMiyazaki = products.filter (t=>t.director === 'Gorō Miyazaki');    
-    const yonebayashi = products.filter (t=>t.director === 'Hiromasa Yonebayashi');
-    const wit = products.filter (t=>t.director === 'Michaël Dudok de Wit');
-    const [filterDone, setFilterDone] = useState(false)
-    const [authors, setAuthors] = useState()
-    const todes = () => {setAuthors(products)}
-    const mainFilter = event => {
-        switch (event.target.innerText) {
-            case 'Hayao Miyazaki':
-                setAuthors(miyazaki);
-                setFilterDone(true)
-                break;
-            case 'Isao Takahata':
-                setAuthors(takahata);
-                setFilterDone(true)
-                break;
-            case 'Yoshifumi Kondō':
-                setAuthors(kondo)
-                setFilterDone(true)
-                break;
-            case 'Hiroyuki Morita':
-                setAuthors(morita);
-                setFilterDone(true)
-                break;
-            case 'Gorō Miyazaki':
-                setAuthors(gMiyazaki);
-                setFilterDone(true)
-                break;
-            case 'Hiromasa Yonebayashi':
-                setAuthors(yonebayashi);
-                setFilterDone(true)
-                break;
-            case 'Michaël Dudok de Wit':
-                setAuthors(wit);
-                setFilterDone(true)
-                break;
-        }
-    }
+        const productsCollection = collection(db, 'productos');
+        getDocs(productsCollection)
+        .then(result =>{
+            const lista = result.docs.map(doc =>{
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            });
+            setProducts(lista);
+        })
+        .catch(err => console.log(err))
+        .finally(() => setLoader(false))
+    }, []);
 
-        if (loader) {
-            return (
-                <KurenaiLoader />
-            );
-        }
+    const [filterDone, setFilterDone] = useState(false)
+    const [category, setCategory] = useState()
+    const todos = () => {setCategory(products)}
+    const poleras = products.filter (t=>t.category === 'Poleras')
+    const totebags = products.filter (t=>t.category === 'Totebags')
+    const polerones = products.filter (t=>t.category === 'Polerones')
+    const mainFilter = event => {
+            switch (event.target.innerText) {
+                case 'Poleras':
+                    setCategory(poleras);
+                    setFilterDone(true)
+                    break;
+                case 'Totebags':
+                    setCategory(totebags);
+                    setFilterDone(true)
+                    break;
+                case 'Polerones':
+                    setCategory(polerones)
+                    setFilterDone(true)
+                    break;
+            }}
 
     return(
             <div>                
-                {/* <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1> */}
+                <h1 style={{fontWeight:'lighter', backgroundColor: 'darkred'}}>{ greetings }</h1>
                 <p>Somos Kurenai Store, tienda especializada en llevar las mejores ilustraciones y diseños de manga, animé, rock y metal a poleras de gran calidad.</p>   
                 <div className="filtersContainer">
-                    <h3 style={{fontWeight: 'lighter', paddingLeft: '1rem', width:'20%'}}>Filtros por director:</h3>
+                    <h3 style={{fontWeight: 'lighter', paddingLeft: '1rem', width:'20%'}}>Filtro por categoría:</h3>
                     <div style={{display: 'flex', justifyContent: 'space-around', width: '80%'}}>
-                        <button onClick={todes} className="buttonStyle">Tod@s</button>
-                        <button onClick={mainFilter} className="buttonStyle">Hayao Miyazaki</button>
-                        <button onClick={mainFilter} className="buttonStyle">Isao Takahata</button>
-                        <button onClick={mainFilter} className="buttonStyle">Yoshifumi Kondō</button>
-                        <button onClick={mainFilter} className="buttonStyle">Hiroyuki Morita</button>
-                        <button onClick={mainFilter} className="buttonStyle">Gorō Miyazaki</button>
-                        <button onClick={mainFilter} className="buttonStyle">Hiromasa Yonebayashi</button>
-                        <button onClick={mainFilter} className="buttonStyle">Michaël Dudok de Wit</button>
+                        <button onClick={todos} className="buttonStyle">Todos</button>
+                        <button onClick={mainFilter} className="buttonStyle">Poleras</button>
+                        <button onClick={mainFilter} className="buttonStyle">Polerones</button>
+                        <button onClick={mainFilter} className="buttonStyle">Totebags</button>
                     </div>
                 </div>
                 {filterDone 
-                ? <ItemList films={authors}/>
-                : <ItemList films={products}/>}
+                ? <ItemList products={category}/>
+                : <ItemList products={products}/>}
+                {/* {loader ? <KurenaiLoader /> : <ItemList products={products} />} */}
             </div>
     )
 }

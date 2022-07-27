@@ -10,7 +10,7 @@ import Cart from './components/Cart';
 import CartCustomProvider from './contexts/CartContext'
 
 function App() {
-  const bienvenida = 'Bienvenid@s!';
+  const bienvenida = 'Bienvenid@s a Kurenai';
 
   return (
     <div className="App">
@@ -20,7 +20,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Inicio />}/>
             <Route path='/productos' element={<ItemListContainer greetings={bienvenida}/>}/>
-            <Route path='/productos/:id' element={<ItemDetailContainer />} />
+            {/* <Route path='/category/:categoryId' element={<ItemListContainer greetings={bienvenida}/>}/> */}
+            <Route path="/productos/:productId" element={<ItemDetailContainer />} />
             <Route path='/nosotros' element={<Nosotros />}/>  
             <Route path='/cart' element={<Cart />}/>            
           </Routes>
