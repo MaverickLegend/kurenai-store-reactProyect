@@ -4,7 +4,8 @@ const { Provider } = cartContext;
 
 const CartCustomProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
-    const [qtyItems, setQtyItems] = useState(0);  
+    const [qtyItems, setQtyItems] = useState(0);
+    const [sumaTotal, setSumaTotal] = useState();  
 
     const getQtyItems = () => {
         let qty = 0;
@@ -14,6 +15,7 @@ const CartCustomProvider = ({ children }) => {
 
     useEffect(() => {
         getQtyItems();
+        getSumaTotal();
     }, [products])
 
 
@@ -29,14 +31,16 @@ const CartCustomProvider = ({ children }) => {
         else{
             setProducts([...products, singleProduct])
         }
+    };
+
+    const getSumaTotal = () => {
+        const valorFinal = products.map((singleProduct =>  singleProduct.price*qtyItems));
+        setSumaTotal(...valorFinal);
     }
 
-    const deleteItem = () => {
-        const founded = products.find(p => p.id !== products.id)
-        const deleted = [...products]
-        console.log(founded)
-        console.log(founded.qty)
-    }
+    const deleteItem = (id) => {
+        setProducts(products.filter(product => product.id !== id));
+    };
 
     const isInCart = (id) => {
         return products.some(singleProduct => singleProduct.id === id)
@@ -45,10 +49,10 @@ const CartCustomProvider = ({ children }) => {
     const clear = () => {
         setProducts([]);
         setQtyItems(0);
-    }
+    };
     
     return (
-        <Provider value={{ products, addItem, deleteItem, clear, qtyItems }}>
+        <Provider value={{ products, addItem, deleteItem, clear, qtyItems, sumaTotal }}>
             {children}
         </Provider>
     )
